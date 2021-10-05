@@ -1,4 +1,6 @@
 import pickle
+import sklearn
+print("Sklearn version: {}".format(sklearn.__version__))
 
 from flask import Flask
 from flask import request
