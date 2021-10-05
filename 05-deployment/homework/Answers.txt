@@ -1,0 +1,10 @@
+# Question 1
+pipenv 
+version 2021.5.29
+
+# Question 2
+1st hash pipfile.lock
+sha256:121f78d6564000dc5e968394f45aac87981fcaaf2be40cfcd8f07b2baa1e1829
+
+
+
