@@ -1,0 +1,37 @@
+[+] Building 3.1s (2/3)                                                                                                                               
+[+] Building 22.9s (2/3)                                                                                                                              
+[+] Building 144.3s (11/11) FINISHED                                                                                                                  
+ => [internal] load build definition from Dockerfile                                                                                             0.8s
+ => => transferring dockerfile: 319B                                                                                                             0.0s
+ => [internal] load .dockerignore                                                                                                                1.0s
+ => => transferring context: 2B                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/agrigorev/zoomcamp-model:3.8.12-slim                                                                 44.0s
+ => [1/6] FROM docker.io/agrigorev/zoomcamp-model:3.8.12-slim@sha256:1ee036b365452f8a1da0dbc3bf5e7dd0557cfd33f0e56b28054d1dbb9c852023           28.7s
+ => => resolve docker.io/agrigorev/zoomcamp-model:3.8.12-slim@sha256:1ee036b365452f8a1da0dbc3bf5e7dd0557cfd33f0e56b28054d1dbb9c852023            0.3s
+ => => sha256:1ee036b365452f8a1da0dbc3bf5e7dd0557cfd33f0e56b28054d1dbb9c852023 1.78kB / 1.78kB                                                   0.0s
+ => => sha256:f0f43f7bc6e011e8bf94864534e9827e97934b8786bfd4bcdb5c847d67a50a04 8.30kB / 8.30kB                                                   0.0s
+ => => sha256:6d9f6b5c1e712fa60caf3b1b4644b47abe0bec3fd2b6389bc1f8114f3269b9a9 10.76MB / 10.76MB                                                 5.1s
+ => => sha256:aee78d8222132bc168ae0d97914077508c31763bb168955723883c59593868ae 1.08MB / 1.08MB                                                   3.1s
+ => => sha256:bd897bb914af2ec64f1cff5856aefa1ae99b072e38db0b7d801f9679b04aad74 31.37MB / 31.37MB                                                14.0s
+ => => sha256:cf9f290bd6be1670494fceedbf07a21958f8e99ef25ca48f1291410c7544a6b5 233B / 233B                                                       3.9s
+ => => sha256:5e4b501cbda59bcec36db68e2b95f750a8499c7d0d8cc274e12c858379570ecb 2.64MB / 2.64MB                                                   7.4s
+ => => sha256:bd464adb968209c6a6c489fca56b9fc51b0200862e364fabb598b5c2d783c041 132B / 132B                                                       6.2s
+ => => sha256:c803b748156db029fb73b4069a86fb12681895e951bf5ddd7b3225dbf7e277b9 870B / 870B                                                       6.8s
+ => => extracting sha256:bd897bb914af2ec64f1cff5856aefa1ae99b072e38db0b7d801f9679b04aad74                                                        1.7s
+ => => extracting sha256:aee78d8222132bc168ae0d97914077508c31763bb168955723883c59593868ae                                                        0.1s
+ => => extracting sha256:6d9f6b5c1e712fa60caf3b1b4644b47abe0bec3fd2b6389bc1f8114f3269b9a9                                                        0.5s
+ => => extracting sha256:cf9f290bd6be1670494fceedbf07a21958f8e99ef25ca48f1291410c7544a6b5                                                        0.0s
+ => => extracting sha256:5e4b501cbda59bcec36db68e2b95f750a8499c7d0d8cc274e12c858379570ecb                                                        0.2s
+ => => extracting sha256:bd464adb968209c6a6c489fca56b9fc51b0200862e364fabb598b5c2d783c041                                                        0.0s
+ => => extracting sha256:c803b748156db029fb73b4069a86fb12681895e951bf5ddd7b3225dbf7e277b9                                                        0.0s
+ => [internal] load build context                                                                                                                0.8s
+ => => transferring context: 23.32kB                                                                                                             0.1s
+ => [2/6] RUN pip install pipenv                                                                                                                16.2s
+ => [3/6] WORKDIR /app                                                                                                                           1.4s
+ => [4/6] COPY [Pipfile, Pipfile.lock, ./]                                                                                                       1.7s
+ => [5/6] RUN pipenv install --system --deploy                                                                                                  43.3s
+ => [6/6] COPY [predict.py, model1.bin, ./]                                                                                                      2.2s
+ => exporting to image                                                                                                                           4.1s
+ => => exporting layers                                                                                                                          3.7s
+ => => writing image sha256:ed5963743bfc27d7bfa379e425d7012f25dfbd8a01b7bd51e9871072fc2a7313                                                     0.1s
+ => => naming to docker.io/library/zoomcamp-w5                                                                                                   0.1s
