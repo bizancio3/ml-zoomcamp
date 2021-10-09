@@ -4,7 +4,7 @@
 import pickle
 
 customer = {
-    "contract": "month-to-month",
+    "contract": "two_year",
     "tenure": 12,
     "monthlycharges": 19.7
 }

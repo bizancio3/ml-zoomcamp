@@ -6,10 +6,10 @@ import requests
 
 url = 'http://localhost:9696/predict'
 
-customer_id = 'question4'
+customer_id = 'question6'
 customer = {
     "contract": "two_year", 
-    "tenure": 10, 
+    "tenure": 12, 
     "monthlycharges": 10
 }
 
