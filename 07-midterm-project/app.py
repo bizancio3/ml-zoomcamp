@@ -1,14 +1,12 @@
 import pickle
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
 import uvicorn
 
 model_path = 'water1.bin'
 # reminder:
 # include threshold for water safety as parameter
-
 
 #creating the app (instance of fastapi object)
 app = FastAPI(
@@ -21,22 +19,10 @@ app = FastAPI(
 with open(model_path, 'rb') as f_in:
     dv, model = pickle.load(f_in)
 
-#data schema for input parameters
-class Input(BaseModel):
-    ph:float
-    hardness:float
-    solids:float
-    chloramines:float
-    sulfate:float
-    conductivity:float
-    organic_carbon:float
-    trihalomethanes:float
-    turbidity:float
-
 #creating endpoint
-@app.post("/",tags = ["predict"])
-def predict(features:Input):
-    sample = features.dict()
+@app.post('/predict')
+async def predict(payload: Request):
+    sample = await payload.json()
     
     X = dv.transform([sample])
     y_pred = model.predict_proba(X)[0, 1]
