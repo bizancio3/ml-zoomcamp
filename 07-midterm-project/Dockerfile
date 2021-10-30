@@ -8,8 +8,8 @@ COPY ["Pipfile", "Pipfile.lock", "./"]
 
 RUN pipenv install --system --deploy
 
-COPY ["predict.py", "water1.bin", "./"]
+COPY ["app.py", "water1.bin", "./"]
 
 EXPOSE 8000
 
-ENTRYPOINT ["uvicorn", "predict:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["gunicorn", "--workers=3", "--worker-class=uvicorn.workers.UvicornWorker", "--bind=0.0.0.0:8000", "app:app"]

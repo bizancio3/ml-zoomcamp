@@ -2,21 +2,20 @@
 # coding: utf-8
 
 import pickle
-
 import pandas as pd
 import numpy as np
 
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.metrics import classification_report
 
 from catboost import CatBoostClassifier
 
+# parameters
 output_file = 'water1.bin'
 random_seed = 42
 
-# ETL
-
+# ETL pipeline
 df_raw = pd.read_csv("water_potability.csv")
 df_raw.columns = df_raw.columns.str.lower()
 
@@ -25,20 +24,21 @@ def fill_nan(df):
         df[column] = df[column].fillna(df.groupby('potability')[column].transform('mean'))
     
     return df
-        
 df = fill_nan(df_raw)
 
-# fulltrain, test datasets
- 
+# split fulltrain, test
 X = df.drop(['potability'], axis = 1)
 y = df['potability']                                       
 
-X_fulltrain, X_test, y_fulltrain, y_test = train_test_split(X, y, test_size=0.2, random_state=random_seed)
+df_fulltrain, df_test, y_fulltrain, y_test = train_test_split(X, y, test_size=0.2, random_state=random_seed)
 
-# scaling
-sc = StandardScaler()
-X_fulltrain = sc.fit_transform(X_fulltrain)
-X_test = sc.transform(X_test)
+tempdict_1 = df_fulltrain.to_dict(orient='records')
+tempdict_2 = df_test.to_dict(orient='records')
+
+dv = DictVectorizer(sparse=False)
+
+X_fulltrain = dv.fit_transform(tempdict_1)
+X_test = dv.transform(tempdict_2)
 
 # training 
 params = {
@@ -57,9 +57,14 @@ model.fit(
     plot=True
 )
 
+y_pred = model.predict(X_test)
+
+print()
+print(classification_report(y_test, y_pred))
+
 # Save model as binary
 
 with open(output_file, 'wb') as f_out:
-    pickle.dump((sc, model), f_out)
+    pickle.dump((dv, model), f_out)
 
-print(f'the model is saved to {output_file}')
+print(f'Catboost model is saved to {output_file}')

@@ -15,6 +15,7 @@ traitlets = "*"
 ipython = "*"
 ipywidgets = "*"
 requests = "*"
+pickle-mixin = "*"
 
 [dev-packages]
 
