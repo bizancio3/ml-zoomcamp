@@ -10,7 +10,7 @@ To deploy a machine learning model as web microservice to determine whether wate
 - catboost_info/ (directory with Catboost log files)
 
 **Important remarks:** \
-a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000" to deploy service on local machine g) Run "python predict-localtest.py" for testing on localhost:8000
+a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000 midterm-p7" to deploy service on local machine g) Run "python predict-localtest.py" for testing on localhost:8000
   
 
 ## 1. Use case motivation
