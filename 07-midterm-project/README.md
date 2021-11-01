@@ -9,9 +9,8 @@ To deploy a machine learning model as web microservice to determine whether wate
 - Dockerfile
 - catboost_info/ (directory with Catboost log files)
 
-**Important comments:** \
-a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment.
-c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000" to deploy service on local machine g) Run "python predict-localtest.py" for testing on localhost:8000
+**Important remarks:** \
+a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000" to deploy service on local machine g) Run "python predict-localtest.py" for testing on localhost:8000
   
 
 ## 1. Use case motivation
@@ -21,7 +20,7 @@ The data product described above could prove to be very useful to get a quick ev
 <br />
 
 **Problem statement** 
-> ### Can we conclude based on these water analytics  whether a sample is safe to drink? (level of potability)
+> ### Can we conclude based on basic analytics whether a sample is safe to drink? (level of potability)
 
 ## 2. Source
 `water_potability.csv` - contains water quality metrics for 3276 different water bodies
