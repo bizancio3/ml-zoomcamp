@@ -5,8 +5,7 @@ from fastapi.responses import JSONResponse
 import uvicorn
 
 model_path = 'water1.bin'
-# reminder:
-# include threshold for water safety as parameter
+threshold = 0.5
 
 #creating the app (instance of fastapi object)
 app = FastAPI(
@@ -26,7 +25,7 @@ async def predict(payload: Request):
     
     X = dv.transform([sample])
     y_pred = model.predict_proba(X)[0, 1]
-    safety = y_pred >= 0.5
+    safety = (y_pred >= threshold)
 
     result = {
         'water_potability': float(y_pred),
