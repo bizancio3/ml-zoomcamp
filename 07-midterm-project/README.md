@@ -20,7 +20,7 @@ The data product described above could prove to be very useful to get a quick ev
 <br />
 
 **Problem statement** 
-> ### Can we conclude based on basic analytics whether a sample is safe to drink? (level of potability)
+> ### Can we conclude based on basic physicochemical analysis whether a sample of water is safe to drink? (level of potability)
 
 ## 2. Source
 `water_potability.csv` - contains water quality metrics for 3276 different water bodies
