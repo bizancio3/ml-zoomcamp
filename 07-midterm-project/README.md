@@ -1,17 +1,21 @@
-**Outline (project purpose):** \
+**Outline (project purpose)** \
 To deploy a machine learning model as web microservice to determine whether water is safe to drink based on a physicochemical analysis
 
 ## 0. Contents of this repository
 - README.md
 - Pipfile, Pipfile.lock 
 - notebook.ipynb
-- train.py, predict.py, predict-localtest.py  
+- train.py, predict.py, predict-test.py  
 - Dockerfile
 - catboost_info/ (directory with Catboost log files)
+- water_probability.csv
+- water1.bin
 
-**Important remarks:** \
-a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000 midterm-p7" to deploy service on local machine g) Run "python predict-localtest.py" for testing on localhost:8000
-  
+**Important remarks** \
+a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000 midterm-p7" to deploy service on local machine g) Run "python predict-test.py" for testing on localhost:8000
+
+**Testing cloud deployment** \
+a) Run "eb init" inside pipenv shell b) Run "eb local run --port 8000" to build docker container c) Run "eb create midterm-p7" to deploy d) Await for AWS message 'Application available at ....' e) Copy new host address to predict-test.py and execute f) Run "eb terminate midterm-p7" not to waste resources uselessly 
 
 ## 1. Use case motivation
 **How the solution could be used?** \

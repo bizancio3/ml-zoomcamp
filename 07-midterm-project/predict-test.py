@@ -3,7 +3,8 @@
 
 import requests
 
-url = 'http://localhost:8000/predict'
+host = 'localhost:8000'
+url = f'http://{host}/predict'
 
 sample = {
     "ph": 7.1,
