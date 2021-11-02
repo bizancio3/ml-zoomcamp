@@ -7,27 +7,27 @@ To deploy a machine learning model as web microservice to determine whether wate
 - notebook.ipynb
 - train.py, predict.py, predict-test.py  
 - Dockerfile
-- catboost_info/ (directory with Catboost log files)
+- catboost_info/ (directory with Catboost log data)
 - water_probability.csv
 - water1.bin
 
 **Important remarks** \
-a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000 midterm-p7" to deploy service on local machine g) Run "python predict-test.py" for testing on localhost:8000
+a) notebook.ipynb describes DEA and modeling process b) Run "pipenv install" to create virtual environment c) Run "pipenv shell" to activate d) Run "python train.py" to generate binary water1.bin e) Run "docker build -t midterm-p7 ." to create docker image f) Run "docker run --rm -d -p 8000:8000 midterm-p7" to deploy service on local machine g) Run "python predict-test.py" for testing on localhost:8000 h) Eventually, you can also run "python predict.py" instead of docker container, in order to execute the FastAPI app directly
 
 **Testing cloud deployment** \
-a) Run "eb init" inside pipenv shell b) Run "eb local run --port 8000" to build docker container c) Run "eb create midterm-p7" to deploy d) Await for AWS message 'Application available at ....' e) Copy new host address to predict-test.py and execute f) Run "eb terminate midterm-p7" not to waste resources uselessly 
+a) Run "eb init" inside pipenv shell b) Run "eb local run --port 8000" to build docker container c) Run "eb create midterm-p7" to deploy d) Await for AWS message 'Application available at ....' e) Copy new host address to predict-test.py and execute file f) Run "eb terminate midterm-p7" not to waste any cloud resources uselessly 
 
 ## 1. Use case motivation
 **How the solution could be used?** \
 Features included in the dataset are quite basic analytic parameters, not liable to complex procedures.
-The data product described above could prove to be very useful to get a quick evaluation of water potability, could potentially be deployed to edge devices to evaluate water samples on site 
+Such data product could prove to be very useful to get a quick evaluation of water potability. Even it could potentially be deployed to edge devices in order to evaluate water samples on site 
 <br />
 
 **Problem statement** 
 > ### Can we conclude based on basic physicochemical analysis whether a sample of water is safe to drink? (level of potability)
 
 ## 2. Source
-`water_potability.csv` - contains water quality metrics for 3276 different water bodies
+`water_potability.csv` - contains quality metrics for 3276 different bodies of water
 
 Dataset source: \
 https://www.kaggle.com/adityakadiwal/water-potability
