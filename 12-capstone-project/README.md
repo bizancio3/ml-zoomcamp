@@ -78,7 +78,7 @@ Should you need to reproduce the container deployment process on Heroku, please 
 
 **NOTE:** \
 The selected model to be deployed is included by default in this repository as pickle file (fire1.bin). \
-If you want to generate the file again, run within pipenv shell:
+If you want to generate the file again, run within the pipenv shell:
 
     python train.py
 
