@@ -17,6 +17,7 @@ To previosly download and install the software, follow the instructions from [He
     heroku create capstone-p12
 
 **4) Pushing docker image pointing to the app**
+(execute only from current directory)
 
     heroku container:push -a capstone-p12
 
@@ -25,6 +26,5 @@ To previosly download and install the software, follow the instructions from [He
     heroku container:release web -a capstone-p12
 
 
-> ### Footnote: 
-> Command # 3 will use the Dockerfile from the current directory to build the Docker image
-> *(which implies that one must first access this folder from the terminal)*
+> **Footer comment:** \
+> Command #3 makes use of the Dockerfile in current directory to create the Docker image 
