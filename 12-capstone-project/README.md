@@ -45,18 +45,20 @@ Please clone this repository and follow instructions below.
 ### **a) Deployment in local machine**
 
 Once in the main folder, create a virtual environment with pipenv: \
-(requirements listed in Pipfile)
+(ideally you should have a python 3.8 interpreter installed for pipenv to make use)
+
 
     pipenv install
 
-Activate it and run all subsequent code from within the pipenv shell:
+*Note: The list of requirements is specified in the Pipfile. But one can always use other tools to meet the same conditions.* \
+Activate the pipenv shell, and run all subsequent code from within the created environment:
 
     pipenv shell
 
 In order to create a docker image run: \
 ("capstone-p12" is here an arbitrary name for this exercise)
 
-    docker build -t capstone-p12
+    docker build -t capstone-p12 .
 
 Deploy the newly created docker image to your local machine:
 
