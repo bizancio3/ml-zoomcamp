@@ -27,16 +27,16 @@ Once retrained to new geographic specific conditions, the data microserver must 
 - `water1.bin`
 - `cloud_deploy/`
 
-Extensive exploratory data analysis (EDA) has been performed to understand the nature of the problem. In particular, an effort was made in order to determine the significance of a linear (baseline) model prior to any modeling attempts, including statistical testing for:
-- linearity
-- normality of the residuals
-- homoscedasticity
+Extensive **exploratory data analysis (EDA)** has been performed to understand the nature of the problem. In particular, an effort was made in order to determine the significance of a linear (baseline) model prior to any modeling attempts, including statistical testing for:
+- **linearity**
+- **normality of the residuals**
+- **homoscedasticity**
 
 All this was done with the purpose of establishing cause-effect relationships between the variables that would allow subsequent feature engineering. 
 
-Read notebook.ipynb to access the full discussion. 
+Read [notebook.ipynb](notebook.ipynb) to access the full discussion. 
 
-A k-neighbor predictor was chosen, because with equal accuracy in a low signal-to-noise context (high uncertainty, with likely hidden factors) it is at least a very light model and therefore optimal to be deployed.
+A `k-neighbor predictor` was chosen, **because with equal accuracy in a low signal-to-noise context (high uncertainty, with likely hidden factors) it is at least a very light model and therefore optimal to be deployed**.
 
 ## 3. Reproducibility
 Please clone this repository and follow instructions below.
@@ -69,32 +69,41 @@ The service can be tested now by running:
     python predict-localtest.py
 
 ### **b) Cloud deployment**
-For the purpose of this exercise, the service has been deployed to Heroku. \
-Endpoint is available at this address:
+The app was successfully **deployed to Heroku as a docker container**. \
+The endpoint is located and can be checked at this address: \
+https://capstone-p12.herokuapp.com/
 
-Deployment to the cloud can be tested now by running:
+Service on this remote host machine can be tested by running: \
+(available at the `cloud-deployment/` folder):
 
     python predict-cloudtest.py
 
-Should you need to reproduce the container deployment process on Heroku, please read the HEROKUAPP.md file in the "cloud-deploy/" folder
+Should you need to reproduce the container deployment process on Heroku, please read the [herokuapp.md](cloud-deployment/herokuapp.md) 
 
-**NOTE:** \
-The selected model to be deployed is included by default in this repository as pickle file (fire1.bin). \
-If you want to generate the file again, run within the pipenv shell:
+**Important note:** 
+>The app is running on a free `dyno`*, which idles after 30 minutes of inactivity (sleeping mode). The dyno manager will reboot when a request is made 
+but this takes up to 15-20 seconds and that's why the service is relatively slow. 
+
+**dynos are isolated, virtualized Linux containers 
+that are designed to execute code based on a user-specified command in Heroku jargon/terminology*
+
+\
+The **final model** used for the entire deployment process is included by default in this repository as a binary (`fire1.bin`). \
+Should you need to generate a new model, perhaps with other hyperparameters, please access [train.py](train.py) and subsequently run from within the pipenv shell:
 
     python train.py
 
 
 ## 4. Data source & literature
 
-The dataset is available from the UC Irvine machine learning repository, \
+The **dataset is available from the UC Irvine machine learning repository**, \
 to download click [here](http://archive.ics.uci.edu/ml/datasets/Forest+Fires).
 
-Reference to the original article: 
+Furthermore, here we reference the `original article`: 
 
 [Cortez and Morais, 2007] P. Cortez and A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In J. Neves, M. F. Santos and J. Machado Eds., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 - Portuguese Conference on Artificial Intelligence, December, Guimarães, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Available at: [http://www.dsi.uminho.pt/~pcortez/fires.pdf](http://www3.dsi.uminho.pt/pcortez/fires.pdf)
     
-### Features description:
+### Original variables description:
 
 1. `X` >> x-axis spatial coordinate within the Montesinho park map: 1 to 9 
 2. `Y` >> y-axis spatial coordinate within the Montesinho park map: 2 to 9 
