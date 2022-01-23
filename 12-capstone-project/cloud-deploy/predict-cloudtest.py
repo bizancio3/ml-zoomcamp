@@ -3,8 +3,8 @@
 
 import requests
 
-host = 'localhost:8000'
-url = f'http://{host}/predict'
+host = 'capstone-p12.herokuapp.com'
+url = f'https://{host}/predict'
 
 sample = {
     "X": 6,

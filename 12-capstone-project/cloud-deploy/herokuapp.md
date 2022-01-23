@@ -19,7 +19,7 @@ To previosly download and install the software, follow the instructions from [He
 **4) Pushing docker image pointing to the app**
 (execute only from current directory)
 
-    heroku container:push -a capstone-p12
+    heroku container:push web -a capstone-p12
 
 **5) Releasing container**
 

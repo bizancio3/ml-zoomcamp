@@ -10,6 +10,6 @@ RUN pipenv install --system --deploy
 
 COPY ["predict.py", "fire1.bin", "./"]
 
-EXPOSE 8000
+EXPOSE $PORT
 
-ENTRYPOINT ["gunicorn", "predict:app"]
+CMD ["gunicorn", "predict:app", "--workers=3", "--worker-class=uvicorn.workers.UvicornWorker"]
